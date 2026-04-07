@@ -1,0 +1,1 @@
+https://gitee.com/wangliang181230/dev-sidecar-config/raw/myself/remote_config_myself.json
