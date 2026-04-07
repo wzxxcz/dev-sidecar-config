@@ -5,7 +5,7 @@
 			"enabled": true
 		},
 		"remoteConfig": {
-			"personalUrl": "https://gitee.com/wangliang181230/dev-sidecar/raw/remote_config/packages/core/src/config/remote_config_myself.json"
+			"personalUrl": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/myself/remote_config_myself.json"
 		},
 		"windowSize": {
 			"width": 900
