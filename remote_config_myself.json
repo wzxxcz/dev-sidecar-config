@@ -13,7 +13,8 @@
 		"autoChecked": false,
 		"closeStrategy": 2,
 		"showShutdownTip": false,
-		"startShowWindow": false
+		"startShowWindow": false,
+		"keepLogFileCount": 10
 	},
 	"server": {
 		"compatible": {
