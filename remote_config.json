@@ -2,27 +2,26 @@
   "app": {
     "remoteConfig": {
       "url": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/main/remote_config.json"
+    },
+    //配置编辑时间、版本信息
+    "metaInfo": {
+      // 元数据就放在这里了
+      "version": 202604071602, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
+      "updateLog": "更新配置地址到新仓库", // 我真的不觉得这个字段有多大必要
+      "id": "official" // 配置id：id区分大小写，只能带有大小写字母、数字、点号与横杠，应当具有说明作用（所以不许用一串数字/乱码代替）
+      // dev-sidecar从2.0.2开始内置的配置是internal，这里是official
+      // 第三方配置应使用Java风格id,即发布网站域名的倒序，但严禁使用com.example之类的烂大街id（com.example保留为示范用途）
+      // 同理禁止使用com.github/com.gitee/com.gitcode/io.github等大概率托管多个配置的网站域名倒序
+      // 托管在github的均推荐在个人的自定义github.io域名上发布；其他易重复网站，可在域名的最后一部分加上自定义名称用来区分，如com.gitee.alice
+      // user/local/test保留给不会公开发布的本地配置使用；以防万一，所有不带点号的id都被保留使用
+      // 只有**等价**的配置出现在不同URL时（比如不同镜像之间）、一份配置的更新迭代之间可以使用相同的id；一份配置变更发布地址时可以保留原有id
+      // 定义**等价**的配置为结构相同、字段完全相同且同一字段的内容完全相同，
+      // 也就是说配置规约为JSON格式后，所有平级字段之间按ASCII增序排列，删除所有不在字符串中的空白字符得到的内容相同
+      // （所有配置都可以通过补全字段字符串引号、删除尾随逗号及所有注释规约为标准JSON；配置中的字段只能是7位ASCII中的可见字符）
     }
   },
   "server": {
     "intercepts": {
-      //配置编辑时间、版本信息
-      "metaInfo": {
-        // 从语义上说，元信息不该插在这里，但是好像放在这里容易debug；所幸不会有网站叫metaInfo
-        "version": 202604071602, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
-        "updateLog": "更新配置地址到新仓库", // 我真的不觉得这个字段有多大必要
-        "id": "official" // 配置id：id区分大小写，只能带有大小写字母、数字、点号与横杠，应当具有说明作用（所以不许用一串数字/乱码代替）
-        // dev-sidecar从2.0.2开始内置的配置是internal，这里是official
-        // 第三方配置应使用Java风格id,即发布网站域名的倒序，但严禁使用com.example之类的烂大街id（com.example保留为示范用途）
-        // 同理禁止使用com.github/com.gitee/com.gitcode/io.github等大概率托管多个配置的网站域名倒序
-        // 托管在github的均推荐在个人的自定义github.io域名上发布；其他易重复网站，可在域名的最后一部分加上自定义名称用来区分，如com.gitee.alice
-        // user/local/test保留给不会公开发布的本地配置使用；以防万一，所有不带点号的id都被保留使用
-        // 只有**等价**的配置出现在不同URL时（比如不同镜像之间）、一份配置的更新迭代之间可以使用相同的id；一份配置变更发布地址时可以保留原有id
-        // 定义**等价**的配置为结构相同、字段完全相同且同一字段的内容完全相同，
-        // 也就是说配置规约为JSON格式后，所有平级字段之间按ASCII增序排列，删除所有不在字符串中的空白字符得到的内容相同
-        // （所有配置都可以通过补全字段字符串引号、删除尾随逗号及所有注释规约为标准JSON；配置中的字段只能是7位ASCII中的可见字符）
-      },
-
       // github相关
       "github.com": {
         "^(/[^/]+){2,}/?(\\?.*)?$": {
@@ -959,7 +958,7 @@
         "rowClass": "title1",
         "children": [
           {
-            "title": "1、官方远程配置版本:202602231340",
+            "title": "1、官方远程配置版本:202604071602",
             "rowClass":"title2"
           },
           {
@@ -967,13 +966,7 @@
             "rowClass":"title2",
             "children":[
               {
-                "title": "更新ms-sso.copilot.microsoft.com规则,防止微软登录卡登录"
-              },
-              {
-                "title": "更新hub.docker.com规则"
-              },
-              {
-                "title": "更新hub.docker.com steamcommunity.com规则,恢复onedrive.live.com规则,在帮助页面新增远程配置说明"
+                "title": "更新配置地址到新仓库"
               }
             ]
           }
