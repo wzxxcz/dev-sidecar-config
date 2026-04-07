@@ -1,0 +1,625 @@
+{
+	"app": {
+		"mode": "default",
+		"autoStart": {
+			"enabled": true
+		},
+		"remoteConfig": {
+			"personalUrl": "https://gitee.com/wangliang181230/dev-sidecar/raw/remote_config/packages/core/src/config/remote_config_myself.json"
+		},
+		"windowSize": {
+			"width": 900
+		},
+		"autoChecked": false,
+		"closeStrategy": 2,
+		"showShutdownTip": false,
+		"startShowWindow": false
+	},
+	"server": {
+		"compatible": {
+			"connect": {
+			},
+			"request": {
+			}
+		},
+		"intercepts": {
+			//region GitHub相关
+			"github.com": {
+				"^/?(\\?.*)?$": {
+					"cacheDays": 7,
+					"cacheImmutable": false,
+					"desc": "首页：缓存7天，可以按 “F5” 来重新加载，不需要 “Ctrl+F5” 强制刷新"
+				},
+				"^(/[^/]{1,35}){1,2}/?(\\?.*)?$": {
+					"cacheDays": 7,
+					"cacheImmutable": false,
+					"etagCacheKeyGenerationStrategy": {
+						"headers": ["Turbo-Frame"],
+						"desc": "Turbo-Frame 请求头，是github的一个请求头，它区分于整个页面刷新与菜单点击刷新页面。两种方式的响应内容不一样，所以缓存也区分开来。"
+					},
+					"desc": "所有一级和二级目录页面：缓存7天，可以按 “F5” 来重新加载，不需要 “Ctrl+F5” 强制刷新"
+				},
+				"^(/[^/]{1,35}){2}/(issue|pull|discussion|wiki|project|security|pulse|fork|network/\\w+|graphs/[\\w-]{1,16}|community|)s?/?(\\?.*)?$": {
+					"cacheDays": 7,
+					"cacheImmutable": false,
+					"etagCacheKeyGenerationStrategy": {
+						"headers": ["Turbo-Frame"],
+						"desc": "Turbo-Frame 请求头，是github的一个请求头，它区分于整个页面刷新与菜单点击刷新页面。两种方式的响应内容不一样，所以缓存也区分开来。"
+					},
+					"desc": "一些三级目录页面：缓存7天，可以按 “F5” 来重新加载，不需要 “Ctrl+F5” 强制刷新"
+				},
+				"^(/[^/]{1,35}){2}/(issue|pull|discussion)s?/\\d+/?(\\?.*)?$": {
+					"cacheMinutes": 5,
+					"cacheImmutable": false,
+					"desc": "Issue、PR、Discussion详情页：缓存1天，可以按 “F5” 来重新加载，不需要 “Ctrl+F5” 强制刷新"
+				},
+				"/fluidicon.png": {
+					"cacheDays": 365,
+					"desc": "Github那只猫的图片，缓存1年"
+				},
+				"^(/[^/]{1,35}){2}/pull/\\d+/open_with_menu.*$": {
+					"cacheDays": 30,
+					"desc": "PR详情页：标题右边那个Code按钮的HTML代理请求地址，感觉上应该可以缓存。暂时先设置为缓存1个月"
+				},
+				"/apache/incubator-seata/security/overall-count": {
+					"cacheDays": 1,
+					"desc": "获取导航栏上 “Security” 数量的接口，缓存1天"
+				},
+				"^/users/[^/]+/hovercard(\\?.*)?$": {
+					"cacheDays": 30,
+					"desc": "鼠标移到头像上弹出的卡片内容，我个人一般很少去看它，缓存1个月"
+				},
+				"^(/[^/]{1,35}){2}/(branch|tag)\\-count(\\?.*)?$": {
+					"cacheDays": 15,
+					"desc": "仓库中，获取Branches和Tags的数量的接口，缓存15天"
+				},
+				"^(/[^/]{1,35}){2}/(issue|pull|discussion)s?/\\d+/hovercard(\\?.*)$": {
+					"cacheDays": 30,
+					"desc": "鼠标移到Issue、PR、Discussion时弹出的卡片内容，我个人一般很少去看它，缓存1个月"
+				},
+				"/notifications/indicator": {
+					"cacheDays": 7,
+					"desc": "通知类型接口，缓存7天"
+				},
+				"/.*/.*/blame/": null,
+				"^/notifications/\\d+/watch_subscription.*$": {
+					"cacheDays": 7
+				},
+				"^(/[^/]{1,35}){2}/overview-files/.*$": {
+					"cacheDays": 7
+				},
+				"^(/[^/]{1,35}){2}/hovercards/citation/sidebar_partial$": {
+					"cacheDays": 7
+				},
+				"^(/[^/]{1,35}){2}/(latest-commit|tree-commit-info)/.*$": {
+					"cacheDays": 1
+				},
+				"^(/[^/]{1,35}){2}/(contributors_list|used_by_list|hovercards/citation/sidebar_partial|recently-touched-branches)(\\?.*)?$": {
+					"cacheDays": 7,
+					"desc": "仓库首页，四个接口，缓存7天"
+				},
+				"^(/[^/]{1,35}){2}/spoofed_commit_check/.+$": {
+					"cacheDays": 7,
+					"desc": "缓存7天"
+				}
+			},
+			"github.githubassets.com": {
+				"/assets/fakefile.js": {
+					"abort": false,
+					"success": {
+						"script": ";"
+					},
+					"cacheDays": 365
+				}
+			},
+			"raw.githubusercontent.com": {
+				"^.*\\.(jpg|jpeg|png|gif|svg)(\\?.*)?$": {
+					"cacheDays": 365,
+					"exclusions": {
+						"^(/[^/]+){2}/refs/heads/.*$": "仓库内页查看文件时，不采用当前缓存策略"
+					}
+				}
+			},
+			"*.githubcopilot.com": {
+				".*": {
+					"options": true
+				}
+			},
+			"customer-stories-feed.github.com": {
+				".*": {
+					"proxy": null,
+					"sni": "baidu.com"
+				}
+			},
+			"api.github.com": {
+				"^/_private/browser/stats$": {
+					"status": 204
+				}
+			},
+			//endregion GitHub相关
+
+			// Google相关
+			"www.google-analytics.com": {
+				"^(/[^/]+)?/collect.*$": {
+					"success": true,
+					"desc": "采集数据，快速成功"
+				}
+			},
+			"lh3.googleusercontent.com": {
+				"^/a/[\\w-=]+$": {
+					"cacheDays": 30,
+					"desc": "一些图片资源"
+				}
+			},
+			"^(?<pre>.googlevideo.com)$": {
+				"*": {
+					"proxy": "${pre}.gvt1.com",
+					"sni": "g.cn"
+				}
+			},
+
+			// 领英相关
+			"px.ads.linkedin.com": {
+				"^/(collect|wa).*$": {
+					"success": true,
+					"desc": "采集数据，快速成功"
+				}
+			},
+
+			// Docker Hub 站点所需的配置
+			"dev.visualwebsiteoptimizer.com": {
+				"^/lib/\\d+.js(\\?.*)?$": {
+					"cacheDays": 7
+				}
+			},
+			"^.*\\.(docker|6sense|auryc|bugsnag)\\.com$": {
+				".*": {
+					"options": true,
+					"desc": "Docker Hub站点，快速响应OPTIONS请求。"
+				}
+			},
+			"*.cloudfront.net": {
+				"^.*\\.(css|js|png|jpg|gif)$": {
+					"cacheDays": 365
+				}
+			},
+
+			// OSS
+			"s01.oss.sonatype.org": {
+				"^(/|[^?]*\\.(js|css|png|ico))(\\?.*)?$": {
+					"cacheDays": 365,
+					"desc": "OSS站点所有静态资源，缓存1年。"
+				}
+			},
+
+			// Pixiv站点需要
+			"cdn.onesignal.com": {
+				".*": {
+					"sni": "cdn.onesignal.com"
+				}
+			},
+			"onesignal.com": {
+				".*": {
+					"cacheDays": 3
+				}
+			},
+			"adserver.assistads.net": {
+				"*": {
+					"abort": true,
+					"desc": "快速响应失败，否则会导致pixiv页面卡死"
+				}
+			},
+
+			// 抢锚位
+			"zkpt.zj.msa.gov.cn": {
+				"^/baiduOcr\\?.*$": {
+					"baiduOcr": [
+						{
+							"id": "101474620",
+							"ak": "fqCvIHGisGwpsglzV2wdxZJ5",
+							"sk": "RhTOXUA4V6CrGuCTJJvUQ7z6Nl4m0Lij",
+							"account": "zjjyhk"
+						},
+						{
+							"id": "101635455",
+							"ak": "vnnFPJIupwFKW4XKcw4HPYnn",
+							"sk": "bBwsXII9iNjHYuivzcwqp4dE483glzFb",
+							"account": "841369634"
+						},
+						{
+							"id": "101894291",
+							"ak": "1fSRH8NkmvBYbU5VHhUj1VWK",
+							"sk": "kkqomydj16fcIx9UyBcpZQkvAjJW7ivo",
+							"account": "tomtaw23"
+						},
+						{
+							"id": "101894748",
+							"ak": "ruN3GBpvREE82xgLTSjo1ta6",
+							"sk": "10rRaf3psTgBjrsQlmaWc2CGyDtOcm6X",
+							"account": "emu87138018"
+						},
+						{
+							"id": "103617126",
+							"ak": "rdVb5PY4t4UuCjGvl68wmZ3Z",
+							"sk": "K05oJHyViiVMAxa5bAJcuhTwW1X0PvA7",
+							"account": "wangliang181230"
+						},
+						{
+							"id": "104829729",
+							"ak": "695cdQgfSPPP0eef8IlGhy61",
+							"sk": "hrCcYTa6eZAcuilf4EzTcFuYgAzgOiRF",
+							"account": "20240809001"
+						},
+						{
+							"id": "106140277",
+							"ak": "R62I2B4sSldgkEaUZBiH70jR",
+							"sk": "WHV27baLgs3uUIZObuduDXwW8Dcbk9u4",
+							"account": "20240814002"
+						},
+						{
+							"id": "112578236",
+							"ak": "rO2BIjujRWOYsXaU1Gekn5Sc",
+							"sk": "OKVlKAu483uRdMOCbHMyo1HQL49OWUvg",
+							"account": "20240830003"
+						}
+					]
+				}
+			}
+		},
+		"dns": {
+			"mapping": {
+				"*.iubenda.com": "tencent",
+				"*.mvnrepository.com": "tencent",
+				"*.gvt1.com": "aliyun"
+			},
+			"providers": {
+				"safe360": {
+					"type": null,
+					"server": "tls://dot.360.cn",
+					"cacheSize": null
+				},
+				"aliyun": {
+					"server": "tls://dns.alidns.com",
+					"type": null,
+					"cacheSize": null
+				},
+				"google": {
+					"server": "udp://8.8.8.8"
+				},
+				"tencent": {
+					"server": "udp://119.29.29.29"
+				},
+				"114": {
+					"server": "udp://114.114.114.114"
+				},
+				"bebasid": {
+					"server": "tls://dns.bebasid.com",
+					"sni": "baidu.com"
+				},
+				"rubyfish": null,
+				"quad9": null,
+				"cf-DoT": {
+					"cacheSize": null
+				},
+				"cf-DoH": null,
+				"cloudflare": null,
+				"Google-DoH": null
+			},
+			"speedTest": {
+				"interval": 300000,
+				"hostnameList": [
+					"challenges.cloudflare.com",
+					"github.com",
+					"api.github.com"
+				],
+				"dnsProviders": [
+					"114",
+					"cf-DoT",
+					"safe360",
+					"aliyun",
+					"google",
+					"tencent",
+					"bebasid"
+				]
+			}
+		},
+		"preSetIpList": {
+			"github.com": {
+				// 最优三个IP
+				"20.27.177.113": true,
+				"20.200.245.247": true,
+				"20.205.243.166": false, // 不稳定，默认禁用
+
+				// 以下IP速度太慢，删除掉
+				"4.237.22.38": false,
+				"140.82.116.3": false,
+				"140.82.116.4": false,
+				"20.26.156.215": null,
+				"20.87.245.0": null,
+				"20.201.28.151": null,
+				"140.82.113.3": false,
+				"140.82.114.4": false,
+				"140.82.121.3": null,
+				"140.82.121.4": null
+			},
+			"gist.github.com": {
+				"140.82.116.3": true,
+				"140.82.116.4": true,
+				"20.27.177.113": true,
+				"4.237.22.38": false
+			},
+			"api.github.com": {
+				// 最优三个IP
+				"20.27.177.116": true,
+				"20.200.245.245": false,
+				"20.205.243.168": true,
+
+				// 次要选择
+				"20.248.137.49": false,
+				"4.237.22.34": false,
+
+				// 以下IP速度太慢，删除掉
+				"140.82.116.5": null,
+				"140.82.116.6": false,
+				"20.26.156.210": null,
+				"20.87.245.6": false,
+				"20.201.28.148": null,
+				"140.82.112.5": false,
+				"140.82.113.6": false,
+				"140.82.121.6": null
+			},
+			"codeload.github.com": {
+				"20.27.177.114": true,
+				"20.200.245.246": true,
+				"20.205.243.165": true,
+
+				// 以下IP速度太慢，删除掉
+				"20.26.156.216": null,
+				"20.87.245.7": null,
+				"20.201.28.149": null,
+				"20.248.137.55": null,
+				"140.82.113.9": null,
+				"140.82.114.10": null,
+				"140.82.116.10": null,
+				"140.82.121.9": null
+			},
+			"d36jcksde1wxzq.cloudfront.net": {
+				"52.85.205.149": true,
+				"18.173.117.85": true,
+				"18.173.117.165": true,
+				"18.173.117.229": true,
+				"18.173.117.171": true
+			},
+			"djeqr6to3dedg.cloudfront.net": {
+				"18.164.173.221": true,
+				"18.155.188.70": true,
+				"18.155.188.126": true,
+				"3.163.178.33": true,
+				"18.155.188.216": true
+			},
+			"www.google-analytics.com": {
+				"203.208.41.65": true,
+				"142.251.12.113": true,
+				"120.253.255.161": true
+			},
+			"www.gravatar.com": {
+				"192.0.73.2": true
+			}
+		}
+	},
+	"proxy": {
+		"excludeDomesticDomainAllowList": false,
+		"excludeIpList": {
+			"*.yongkanghealth.com": true,
+
+			// PC移动热点
+			"192.168.137.1": true,
+
+			// 小米
+			"*.xiaomi.com": true,
+			"*.xiaomi.net": true,
+			"*.xiaomixiaoai.com": true,
+			"*.miui.com": true,
+			"*.mi-img.com": true,
+			"*.mi.com": true,
+			"*.mijia.tech": true,
+			"*.miwifi.com": true,
+			// 其他
+			"*.getui.com": true,
+			"*.getui.net": true,
+			"*.gepush.com": true,
+			"*.ksyun.com": true,
+			"*.pangolin-dsp-toutiao.com": true,
+			"*.autonavi.com": true,
+			"*.amap.com": true,
+			"203.107.1.65": true,
+			"59.82.99.78": true,
+			"*.igexin.com": true,
+
+			// 阿里
+			"*.aliyuncs.com": true,
+
+			// Github
+			"*.githubcopilot.com": true,
+			"alive.github.com": true,
+
+			// NodeJS
+			"*.nodejs.org": true,
+
+			// 奇虎
+			"*.qhres2.com": true,
+
+			// 微软
+			"*.microsoft.net": true,
+
+			// 联想
+			"*.lenovo.com": true,
+
+			// navicat
+			"*.navicat.com": true,
+
+			// AGE动漫
+			"*.age.tv": true,
+			"*.agefuns.com": true,
+			"*.agedm.*": true,
+			"*.bdxiguaimg.com": true,
+			"*.bytegoofy.com": true,
+			"*.toutiaovod.com": true,
+			"*.ffzy-online5.com": true,
+			"*.rrcdnbf7.com": true,
+			"*.tlkqc.com": true,
+			"*.stttu.vip": true,
+			"*.bfvvs.com": true,
+			"*.ymuuy.com": true,
+			"*.cdnlz22.com": true,
+			"*.wlcdn99.com": true,
+			"*.fentvoss.com": true,
+			"*.hijjk.com": true,
+			"*.aiqingyu1314.com": true,
+			// 播放器的IP，偶尔会变，如果发现播放器报错了，就F12查看网络里，加载播放器的URL里的IP
+			"*.ibytedtos.com": true, // 腾讯
+			"*.rrcdnbf5.com": true, // 暴风
+			"*.dious.cc": true, // 天空（部分报404）
+			"*.cdnlz16.com": true, // 计算云
+			"43.240.156.118": true, // 8443端口，TT云(/m3u8/...)，自建云(/vip/...)
+			"64.32.20.246": true, // 红牛（超时）
+			"43.240.74.134": true,
+			"*.aqdstatic.com": true,
+
+			// FireFox浏览器
+			"*.digicert.com": true,
+			"*.lencr.org": true,
+			"*.globalsign.com": true,
+
+			// ICP备案查询
+			"*.icplishi.com": true,
+
+			// zzzfun
+			"*.zzzfun.*": true,
+			"114.132.55.218": true,
+
+			// ACG动漫网
+			"*.acgvod.com": true,
+
+			// Pixiv部分可直接访问的域名
+			"pixon.ads-pixiv.net": true,
+
+			// 必应
+			"*.bing.com": true,
+
+			// 我的个人或公司的域名
+			"*.easyj.icu": true,
+			"*.jyhk.com": true,
+
+			// 公安
+			"safe.govfz.com": true,
+
+			// 火山引擎（字节）
+			"*.snssdk.com": true,
+			"*.bytedance.com": true,
+			"*.volccdn.com": true,
+			"*.zijieapi.com": true,
+			"*.volcengine.com": true,
+
+			// 未知公司
+			"*.icannwiki.org": true,
+			"*.sectigo.com": true,
+			"*.pingdom.net": true,
+			"*.argent-api.com": true,
+			"122.112.217.39": true,
+			"*.mkeysec.net": true,
+			"*.steampowered.com": true,
+			"*.eccdnx.com": true,
+			"59.108.228.21": true,
+			"*.amazonaws.com": true,
+			"220.191.202.30": true,
+			"*.zssjkw.com": true,
+			"183.6.90.55": true,
+
+			// 移除配置
+			"*.mvnrepository.com": null,
+			"*.sonatype.org": null
+		}
+	},
+	"plugin": {
+		"git": {
+			"enabled": true,
+			"setting": {
+				"noProxyUrls": {
+					"http://192.168.1.101": true,
+					"http://10.1.50.116": true,
+					"http://10.1.51.186": true
+				}
+			}
+		},
+		"node": {
+			"setting": {
+				"registry": "https://registry.npmmirror.com",
+				"yarnRegistry": "https://registry.npmmirror.com"
+			}
+		},
+		"overwall": {
+			"enabled": false,
+			"targets": {
+				// 日本的域名，全部通过彩蛋访问
+				"*.jp": true,
+				"*.gigant-game.net": true,
+
+				// ChatGPT
+				"*.chatgpt.com": true,
+
+				// 搜图
+				"*.saucenao.com": true,
+
+				//region 最近给GitHub前5000仓库贡献代码的人免费发币的活动，下面是需要翻墙的域名。活动攻略：https://v2ex.com/t/1017287
+				// StarkNet
+				//"*.starknet.io": true,
+				//"*.starkscancdn.com": true,
+				// Argent X插件
+				//"*.argent-api.com": true,
+				//"*.argent.xyz": true,
+				//"*.dynamic-static-assets.com": true,
+				// 币安
+				//"*.binance.com": true,
+				// 其他
+				//"*.saasexch.com": true,
+				//"*.bnbstatic.com": true,
+				//endregion
+
+				// BiKa漫画
+				"k6inryrdz5.com": true,
+
+				// OSS
+				"s01.oss.sonatype.org": true,
+
+				// 暂时未知
+				"*.mktoresp.com": true,
+				"*.zdassets.com": true,
+				"*.newrelic.com": true,
+				"*.sentry.io": true,
+				"sessions.bugsnag.com": true,
+				"static.ads-twitter.com": true,
+				"www.dll-files.com": true,
+				"*.apache.org": true,
+				"epsilon.6sense.com": true,
+				"*.8232x.xyz": true, // CLSQ，在没人的时候偷偷访问哦，哈哈
+				"vip6.ljbfbf.com": true,
+				"heitaoak.com": true,
+				"*.redircdn.com": true,
+				"*.thumbplus.com": true,
+				"*.jetbrains.com": true,
+				"*.dlsite.com": true,
+				"*.patreon.com": true,
+
+				// 禁用彩蛋
+				"www.google-analytics.com": false,
+
+				// 移除配置
+				"*.stackpathcdn.com": null,
+				"*.oaistatic.com": null,
+				"*.cloudfront.net": null,
+				"*.bing.com": null
+			}
+		}
+	}
+}
