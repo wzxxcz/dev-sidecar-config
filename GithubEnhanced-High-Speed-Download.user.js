@@ -1,5 +1,5 @@
 /**
- * 当前脚本复制了 `https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js`，并进行了修改和优化，以兼容 `./tampermonkey.js`。
+ * 当前脚本复制了 `https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js`，并进行了兼容性调整，以兼容 `./tampermonkey.js`。
  * 非常感谢 `Github油猴脚本` 的作者 `X.I.U`，提供了如此优秀的脚本。👍
  *
  * @name            Github 增强 - 高速下载（Github油猴脚本）
@@ -47,7 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	(function() {
 		'use strict';
-		var menu_rawFast = GM_getValue('xiu2_menu_raw_fast'), menu_rawFast_ID, menu_rawDownLink_ID, menu_gitClone_ID, menu_customUrl_ID, menu_feedBack_ID, menu_hideShortcut_ID, menu_showShortcut_ID;
+		var menu_rawFast = GM_getValue('xiu2_menu_raw_fast'),
+			menu_rawFast_ID,
+			menu_rawDownLink_ID,
+			menu_gitClone_ID,
+			menu_customUrl_ID,
+			menu_feedBack_ID,
+			menu_hideShortcut_ID,
+			menu_showShortcut_ID;
 		const download_url_us = [
 			['https://gh.h233.eu.org/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@X.I.U/XIU2] 提供'],
 			//['https://gh.api.99988866.xyz/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [github.com/hunshcn/gh-proxy] 提供'], // 官方演示站用的人太多了
@@ -174,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			//['https://jsdelivr.b-cdn.net/gh', '其他', '[中国香港、中国台湾、日本、新加坡等]（CDN 不固定） - 该公益加速源由 [@rttwyjz] 提供&#10;&#10; - 缓存：有'], // 疑似 SNI 阻断
 			//['https://xget.xi-xu.me/gh', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [github.com/xixu-me/Xget] 提供'],
 			//['https://ghproxy.1888866.xyz/https://raw.githubusercontent.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [WJQSERVER-STUDIO/ghproxy] 提供'],
-			//['https://github.moeyy.xyz/https://raw.githubusercontent.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [moeyy.cn] 提供&#10;&#10; - 缓存：有（约 10 分钟）'],  // 墙了
+			//['https://github.moeyy.xyz/https://raw.githubusercontent.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [moeyy.cn] 提供&#10;&#10; - 缓存：有（约 10 分钟）'], // 墙了
 			//['https://gh-proxy.net/https://raw.githubusercontent.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [gh-proxy.net] 提供'],
 			//['https://rapidgit.jjda.de5.net/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [热心网友] 提供'],
 			//['https://github.yongyong.online/https://raw.githubusercontent.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [github.yongyong.online] 提供'],
@@ -210,10 +217,36 @@ document.addEventListener("DOMContentLoaded", () => {
 		// 注册脚本菜单
 		function registerMenuCommand() {
 			// 如果反馈菜单ID不是 null，则删除所有脚本菜单
-			if (menu_feedBack_ID) {GM_unregisterMenuCommand(menu_rawFast_ID); GM_unregisterMenuCommand(menu_rawDownLink_ID); GM_unregisterMenuCommand(menu_gitClone_ID); GM_unregisterMenuCommand(menu_customUrl_ID); GM_unregisterMenuCommand(menu_feedBack_ID); GM_unregisterMenuCommand(menu_hideShortcut_ID); GM_unregisterMenuCommand(menu_showShortcut_ID); menu_rawFast = GM_getValue('xiu2_menu_raw_fast');}
+			if (menu_feedBack_ID) {
+				GM_unregisterMenuCommand(menu_rawFast_ID);
+				GM_unregisterMenuCommand(menu_rawDownLink_ID);
+				GM_unregisterMenuCommand(menu_gitClone_ID);
+				GM_unregisterMenuCommand(menu_customUrl_ID);
+				GM_unregisterMenuCommand(menu_feedBack_ID);
+				GM_unregisterMenuCommand(menu_hideShortcut_ID);
+				GM_unregisterMenuCommand(menu_showShortcut_ID);
+				menu_rawFast = GM_getValue('xiu2_menu_raw_fast');
+			}
 			// 避免在减少 raw 数组后，用户储存的数据大于数组而报错
 			if (menu_rawFast > raw_url.length - 1) menu_rawFast = 0
-			menu_rawDownLink_ID = GM_registerMenuCommand(`${GM_getValue('menu_rawDownLink')?'✅':'❌'} 项目列表单文件快捷下载 (☁)`, function(){if (GM_getValue('menu_rawDownLink') == true) {GM_setValue('menu_rawDownLink', false); GM_notification({text: `已关闭「项目列表单文件快捷下载 (☁)」功能\n（点击刷新网页后生效）`, timeout: 3500, onclick: function(){location.reload();}});} else {GM_setValue('menu_rawDownLink', true); GM_notification({text: `已开启「项目列表单文件快捷下载 (☁)」功能\n（点击刷新网页后生效）`, timeout: 3500, onclick: function(){location.reload();}});}registerMenuCommand();}, {title: "点击开关「项目列表单文件快捷下载 (☁)」功能"});
+			menu_rawDownLink_ID = GM_registerMenuCommand(`${GM_getValue('menu_rawDownLink') ? '✅' : '❌'} 项目列表单文件快捷下载 (☁)`, function () {
+				if (GM_getValue('menu_rawDownLink') == true) {
+					GM_setValue('menu_rawDownLink', false);
+					GM_notification({
+						text: `已关闭「项目列表单文件快捷下载 (☁)」功能\n（点击刷新网页后生效）`, timeout: 3500, onclick: function () {
+							location.reload();
+						}
+					});
+				} else {
+					GM_setValue('menu_rawDownLink', true);
+					GM_notification({
+						text: `已开启「项目列表单文件快捷下载 (☁)」功能\n（点击刷新网页后生效）`, timeout: 3500, onclick: function () {
+							location.reload();
+						}
+					});
+				}
+				registerMenuCommand();
+			}, { title: "点击开关「项目列表单文件快捷下载 (☁)」功能" });
 			if (GM_getValue('menu_rawDownLink')) menu_rawFast_ID = GM_registerMenuCommand(`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'][menu_rawFast]} [ ${raw_url[menu_rawFast][1]} ] 加速源 (☁) - 点击切换`, menu_toggle_raw_fast, {title: "点击切换「项目列表单文件快捷下载 (☁)」功能的加速源"});
 			menu_gitClone_ID = GM_registerMenuCommand(`${GM_getValue('menu_gitClone')?'✅':'❌'} 添加 git clone 命令`, function(){if (GM_getValue('menu_gitClone') == true) {GM_setValue('menu_gitClone', false); GM_notification({text: `已关闭「添加 git clone 命令」功能`, timeout: 3500});} else {GM_setValue('menu_gitClone', true); GM_notification({text: `已开启「添加 git clone 命令」功能`, timeout: 3500});}registerMenuCommand();}, {title: "点击开关「添加 git clone 命令」功能"});
 			menu_customUrl_ID = GM_registerMenuCommand(`#️⃣ 自定义加速源`, function () {
