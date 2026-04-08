@@ -1,5 +1,8 @@
 {
   "app": {
+    "remoteConfig": {
+      "url": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/main/remote_config.json"
+    },
     //配置编辑时间、版本信息
     "metaInfo": {
       // 元数据就放在这里了
