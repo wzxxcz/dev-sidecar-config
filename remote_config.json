@@ -23,7 +23,7 @@
       "github.com": {
         "^(/[^/]+){2,}/?(\\?.*)?$": {
           "tampermonkeyScript": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/main/tampermonkey.js",
-          "script": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/main/GithubEnhanced-High-Speed-Download.user.js"
+          "script": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/main/GithubEnhanced-High-Speed-Download.user.js",
           "remark": "注：上面所使用的脚本地址，为高速镜像地址。",
           "desc": "油猴脚本：高速下载 Git Clone/SSH、Release、Raw、Code(ZIP) 等文件 (公益加速)、项目列表单文件快捷下载、添加 git clone 命令"
         },
