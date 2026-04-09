@@ -105,15 +105,6 @@
 					"desc": "缓存7天"
 				}
 			},
-			"github.githubassets.com": {
-				"/assets/fakefile.js": {
-					"abort": false,
-					"success": {
-						"script": ";"
-					},
-					"cacheDays": 365
-				}
-			},
 			"raw.githubusercontent.com": {
 				"^.*\\.(jpg|jpeg|png|gif|svg)(\\?.*)?$": {
 					"cacheDays": 365,
