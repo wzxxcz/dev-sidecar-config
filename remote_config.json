@@ -66,7 +66,9 @@
       },
       "github.githubassets.com": {
         "/assets/fakefile.js": {
-          "success": true,
+          "success": {
+            "script": ";"
+          },
           "cacheDays": 365
         },
         "^(/[^/]+)*/[^./]+\\.(svg|png|gif|jpg|jpeg|ico|js|css)(\\?.*)?$": {
