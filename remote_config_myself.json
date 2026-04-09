@@ -603,6 +603,7 @@
 				"*.jetbrains.com": true,
 				"*.dlsite.com": true,
 				"*.patreon.com": true,
+				"*.pypi.org": true,
 
 				// 禁用彩蛋
 				"www.google-analytics.com": false,
