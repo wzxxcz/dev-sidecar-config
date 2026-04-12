@@ -727,7 +727,8 @@
         }*/
       },
       "mapping": {
-        "*.googlevideo.com": "aliyun",
+        "*.googlevideo.com": "safe360",
+        "*.gvt1.com": "safe360",
         "*.jetbrains.com": "cf-DoT",
         "*.azureedge.net": "cf-DoT",
         "*.stackoverflow.com": "cf-DoT",
