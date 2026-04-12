@@ -144,12 +144,6 @@
 					"desc": "一些图片资源"
 				}
 			},
-			"^(?<pre>.*).googlevideo.com$": {
-				"*": {
-					"proxy": "${pre}.gvt1.com",
-					"sni": "g.cn"
-				}
-			},
 
 			// 领英相关
 			"px.ads.linkedin.com": {
@@ -262,8 +256,7 @@
 		"dns": {
 			"mapping": {
 				"*.iubenda.com": "tencent",
-				"*.mvnrepository.com": "tencent",
-				"*.gvt1.com": "aliyun"
+				"*.mvnrepository.com": "tencent"
 			},
 			"providers": {
 				"safe360": {
