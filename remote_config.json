@@ -768,7 +768,7 @@
           "steamcommunity.com",
           "api.steampowered.com"
         ],
-        "dnsProviders": ["cf-DoT", "cf-DoH"]
+        "dnsProviders": ["cf-DoT", "safe360"]
       }
     },
     "whiteList": {
