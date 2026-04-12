@@ -730,6 +730,7 @@
         }
       },
       "mapping": {
+        "*.googlevideo.com": "aliyun",
         "*.jetbrains.com": "cf-DoT",
         "*.azureedge.net": "cf-DoT",
         "*.stackoverflow.com": "cf-DoT",
