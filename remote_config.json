@@ -22,12 +22,6 @@
   },
   "server": {
     "intercepts": {
-      "*.gvt1.com": {
-        ".*": {
-          "sni": "g.cn"
-        }
-      },
-
       // github相关
       "github.com": {
         "^(/[^/]+){2,}/?(\\?.*)?$": {
@@ -157,6 +151,11 @@
       "^.*(youtube.com|gstatic.com|youtube.nocookie.com|youtu.be|ggpht.com|i.ytimg.com|blogger.com|doodles.google|about.google|android.com)$": {
         ".*": {
           "sni": "www.google.cn"
+        }
+      },
+      "*.gvt1.com": {
+        ".*": {
+          "sni": "g.cn"
         }
       },
       "www.gstatic.com": {
