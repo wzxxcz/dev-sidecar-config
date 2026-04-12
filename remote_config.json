@@ -714,20 +714,17 @@
       "providers": {
         "cf-DoT": {
           "server": "tls://1.1.1.1",
-          "sni": "baidu.com",
-          "cacheSize": 1000
+          "sni": "baidu.com"
         },
         "cf-DoH": {
           "server": "https://cloudflare-dns.com/dns-query",
-          "sni": "baidu.com",
-          "cacheSize": 1000
-        },
+          "sni": "baidu.com"
+        }/*,
         "Google-DoH": {
           "server": "https://dns.google/dns-query",
           "sni": "www.google.cn",
-          "cacheSize": 1000,
           "desc": "不可用"
-        }
+        }*/
       },
       "mapping": {
         "*.googlevideo.com": "aliyun",
