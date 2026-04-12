@@ -22,6 +22,12 @@
   },
   "server": {
     "intercepts": {
+      "*.gvt1.com": {
+        ".*": {
+          "sni": "g.cn"
+        }
+      },
+
       // github相关
       "github.com": {
         "^(/[^/]+){2,}/?(\\?.*)?$": {
