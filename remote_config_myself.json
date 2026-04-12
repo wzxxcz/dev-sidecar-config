@@ -299,13 +299,8 @@
 					"api.github.com"
 				],
 				"dnsProviders": [
-					"114",
 					"cf-DoT",
-					"safe360",
-					"aliyun",
-					"google",
-					"tencent",
-					"bebasid"
+					"safe360"
 				]
 			}
 		},
