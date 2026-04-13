@@ -6,8 +6,8 @@
     //配置编辑时间、版本信息
     "metaInfo": {
       // 元数据就放在这里了
-      "version": 202604071602, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
-      "updateLog": "更新配置地址到新仓库", // 我真的不觉得这个字段有多大必要
+      "version": 202604140012, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
+      "updateLog": "更新GUI 2.0.1更新日志", // 我真的不觉得这个字段有多大必要
       "id": "official" // 配置id：id区分大小写，只能带有大小写字母、数字、点号与横杠，应当具有说明作用（所以不许用一串数字/乱码代替）
       // dev-sidecar从2.0.2开始内置的配置是internal，这里是official
       // 第三方配置应使用Java风格id,即发布网站域名的倒序，但严禁使用com.example之类的烂大街id（com.example保留为示范用途）
@@ -977,7 +977,7 @@
         "rowClass": "title1",
         "children": [
           {
-            "title": "1、官方远程配置版本:202604071602",
+            "title": "1、官方远程配置版本:202604140012",
             "rowClass": "title2"
           },
           {
@@ -985,7 +985,7 @@
             "rowClass": "title2",
             "children": [
               {
-                "title": "更新配置地址到新仓库"
+                "title": "更新GUI 2.0.1更新日志"
               }
             ]
           }
@@ -1073,6 +1073,10 @@
               {
                 "title": "待办事项",
                 "url": "https://github.com/docmirror/dev-sidecar/milestone/9"
+              },
+              {
+                "title": "[ 2026-04-12 ] v2.0.1",
+                "url": "https://github.com/docmirror/dev-sidecar/releases/tag/v2.0.1"
               },
               {
                 "title": "[ 2025-05-15 ] v2.0.0.2",
