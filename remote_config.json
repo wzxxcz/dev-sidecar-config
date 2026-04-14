@@ -153,6 +153,11 @@
           "sni": "www.google.cn"
         }
       },
+      "^.*.google.com(.\\w+)?$": {
+        ".*": {
+          "sni": "www.google.cn"
+        }
+      },
       "^(?<pre>.*).googlevideo.com$": {
         "*": {
           "proxy_backup": "${pre}.gvt1.com",
