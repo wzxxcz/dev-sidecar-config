@@ -1,5 +1,9 @@
 {
 	"app": {
+        "metaInfo": {
+            "id": "myself",
+            "version": "20260413011638"
+        },
 		"mode": "default",
 		"autoStart": {
 			"enabled": true
