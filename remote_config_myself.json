@@ -2,7 +2,7 @@
 	"app": {
         "metaInfo": {
             "id": "myself",
-            "version": "20260413011638"
+            "version": "202604130116"
         },
 		"mode": "default",
 		"autoStart": {
