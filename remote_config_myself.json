@@ -2,7 +2,7 @@
 	"app": {
         "metaInfo": {
             "id": "myself",
-            "version": "202604130116"
+            "version": "202604151109"
         },
 		"mode": "default",
 		"autoStart": {
@@ -261,6 +261,10 @@
 			"mapping": {
 				"*.iubenda.com": "tencent",
 				"*.mvnrepository.com": "tencent"
+			},
+			"familyMapping": {
+				"*.iubenda.com": "4",
+				"*.mvnrepository.com": "4"
 			},
 			"providers": {
 				"safe360": {
