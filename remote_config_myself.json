@@ -307,8 +307,8 @@
 					"api.github.com"
 				],
 				"dnsProviders": [
-					"cf-DoT",
-					"safe360"
+					"aliyun",
+					"cf-DoT"
 				]
 			}
 		},
