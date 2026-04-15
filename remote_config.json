@@ -733,8 +733,8 @@
         }*/
       },
       "mapping": {
-        "*.googlevideo.com": "safe360",
-        "*.gvt1.com": "safe360",
+        "*.googlevideo.com": "aliyun",
+        "*.gvt1.com": "aliyun",
         "*.jetbrains.com": "cf-DoT",
         "*.azureedge.net": "cf-DoT",
         "*.stackoverflow.com": "cf-DoT",
@@ -761,7 +761,7 @@
       // @since v2.0.2
       "familyMapping": {
         "*.googlevideo.com": "6",
-        "*.gvt1.com": "4",
+        "*.gvt1.com": "6",
         "*.jetbrains.com": "4",
         "*.azureedge.net": "4",
         "*.stackoverflow.com": "4",
