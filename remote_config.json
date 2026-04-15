@@ -760,7 +760,30 @@
       },
       // @since v2.0.2
       "familyMapping": {
-        "*.googlevideo.com": "6"
+        "*.googlevideo.com": "6",
+        "*.gvt1.com": "4",
+        "*.jetbrains.com": "4",
+        "*.azureedge.net": "4",
+        "*.stackoverflow.com": "4",
+        "*.github.com": "4",
+        "*github*.com": "4",
+        "*.github.io": "4",
+        "*.docker.com": "4",
+        "*.electronjs.org": "4",
+        "*.amazonaws.com": "4",
+        "*.yarnpkg.com": "4",
+        "*.cloudfront.net": "4",
+        "*.cloudflare.com": "4",
+        "img.shields.io": "4",
+        "*.vuepress.vuejs.org": "4",
+        "*.gh.docmirror.top": "4",
+        "*.v2ex.com": "4",
+        "*.pypi.org": "4",
+        // Pixiv站点相关
+        "*.pixiv.org": "4",
+        "*.pximg.net": "4",
+        "*.onesignal.com": "4",
+        "*.iubenda.com": "4"
       },
       "speedTest": {
         "interval": 60000,
