@@ -760,7 +760,7 @@
       },
       // @since v2.0.2
       "familyMapping": {
-        "*.googlevideo.com": 6,
+        "*.googlevideo.com": "6"
       },
       "speedTest": {
         "interval": 60000,
