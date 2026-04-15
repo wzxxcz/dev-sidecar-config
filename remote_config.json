@@ -758,6 +758,10 @@
         "*.onesignal.com": "cf-DoT",
         "*.iubenda.com": "cf-DoT"
       },
+      // @since v2.0.2
+      "familyMapping": {
+        "*.googlevideo.com": 6,
+      },
       "speedTest": {
         "interval": 60000,
         "hostnameList": [
