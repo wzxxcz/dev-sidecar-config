@@ -1,9 +1,9 @@
 {
 	"app": {
-        "metaInfo": {
-            "id": "myself",
-            "version": "202604151109"
-        },
+		"metaInfo": {
+			"id": "myself",
+			"version": "202604162055"
+		},
 		"mode": "default",
 		"autoStart": {
 			"enabled": true
@@ -545,6 +545,13 @@
 			"setting": {
 				"registry": "https://registry.npmmirror.com",
 				"yarnRegistry": "https://registry.npmmirror.com"
+			}
+		},
+		"pip": {
+			"setting": {
+				"registryList": {
+					"sdut": "[remove]"
+				}
 			}
 		},
 		"overwall": {
