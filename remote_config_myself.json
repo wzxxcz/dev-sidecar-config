@@ -286,10 +286,6 @@
 				"114": {
 					"server": "udp://114.114.114.114"
 				},
-				"bebasid": {
-					"server": "tls://dns.bebasid.com",
-					"sni": "baidu.com"
-				},
 				"rubyfish": null,
 				"quad9": null,
 				"cf-DoT": {
