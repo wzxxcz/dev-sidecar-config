@@ -429,7 +429,7 @@
 			"*.aliyuncs.com": true,
 
 			// Github
-			"*.githubcopilot.com": true,
+			//"*.githubcopilot.com": true,
 			"alive.github.com": true,
 
 			// NodeJS
