@@ -2,7 +2,7 @@
 	"app": {
 		"metaInfo": {
 			"id": "myself",
-			"version": "202604162055"
+			"version": 202604170315
 		},
 		"mode": "default",
 		"autoStart": {
@@ -304,6 +304,7 @@
 				],
 				"dnsProviders": [
 					"aliyun",
+					"bebasid",
 					"cf-DoT"
 				]
 			}
