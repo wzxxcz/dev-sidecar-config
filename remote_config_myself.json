@@ -550,7 +550,7 @@
 		"pip": {
 			"setting": {
 				"registryList": {
-					"sdut": "[remove]"
+					"sdut": "[delete]"
 				}
 			}
 		},
