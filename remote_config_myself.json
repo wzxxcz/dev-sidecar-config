@@ -2,7 +2,7 @@
 	"app": {
 		"metaInfo": {
 			"id": "myself",
-			"version": 202604170315
+			"version": 202604171058
 		},
 		"mode": "default",
 		"autoStart": {
@@ -13,7 +13,7 @@
 			"personalUrl": "https://gitee.com/wangliang181230/dev-sidecar-config/raw/myself/remote_config_myself.json"
 		},
 		"windowSize": {
-			"width": 900
+			"width": 950
 		},
 		"autoChecked": false,
 		"closeStrategy": 2,
