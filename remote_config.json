@@ -1013,7 +1013,7 @@
         "rowClass": "title1",
         "children": [
           {
-            "title": "1、官方远程配置版本:202604140012",
+            "title": "1、官方远程配置版本:202604170212",
             "rowClass": "title2"
           },
           {
@@ -1021,7 +1021,7 @@
             "rowClass": "title2",
             "children": [
               {
-                "title": "更新GUI 2.0.1更新日志"
+                "title": "添加DNS `bebasid`，并配置YTB视频使用该DNS（用于v2.0.2版本）"
               }
             ]
           }
