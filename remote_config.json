@@ -1111,7 +1111,11 @@
                 "url": "https://github.com/docmirror/dev-sidecar/milestone/9"
               },
               {
-                "title": "[ 2026-04-12 ] v2.0.1",
+                "title": "[ 2026-04-18 ] v2.0.2（支持IPv6、性能和稳定性提升）",
+                "url": "https://github.com/docmirror/dev-sidecar/releases/tag/v2.0.2"
+              },
+              {
+                "title": "[ 2026-04-12 ] v2.0.1（可直连看YouTube视频）",
                 "url": "https://github.com/docmirror/dev-sidecar/releases/tag/v2.0.1"
               },
               {
