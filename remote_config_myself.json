@@ -130,7 +130,14 @@
 			},
 			"api.github.com": {
 				"^/_private/browser/stats$": {
-					"status": 204
+					"status": 204,
+					"success": true,
+					"desc": "github的访问速度分析上传，没有必要，直接返回成功"
+				},
+				"^/_private/browser/errors$": {
+					"status": 204,
+					"success": true,
+					"desc": "上报脚本错误的接口，我一个人就不上报了"
 				}
 			},
 			//endregion GitHub相关
