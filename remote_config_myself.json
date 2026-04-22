@@ -545,7 +545,9 @@
 			}
 		},
 		"node": {
+			"enabled": true,
 			"setting": {
+				"command": "pnpm",
 				"registry": "https://registry.npmmirror.com",
 				"yarnRegistry": "https://registry.npmmirror.com"
 			}
